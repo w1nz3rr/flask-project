@@ -15,7 +15,7 @@ luck = Luck()
 
 @app.route('/')
 def choose():
-    return render_template('pravila.html')
+    return render_template('home.html')
 
 
 @app.route('/rullgame1')
