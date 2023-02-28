@@ -28,7 +28,7 @@ def yes_or_no():
     return f'<div>' \
            f'{style}'\
            f'{g.number()}' \
-           f' {html}' \
+           f' {html_game1}' \
            f'Счет на данный момент:{g.get_count()}<br>' \
            f'<title>БольшеМеньше</title>' \
            f' <a href="/">выбрать другую игру </a><br>'\
@@ -79,7 +79,7 @@ def gameplay():
     l = ['камень', 'ножницы', 'бумага', '-']
     return f'<div>' \
            f'{style}' \
-           f' {htmll}' \
+           f' {html_game2}' \
            f'Ваш ответ : {k.get_x()}</br>'\
            f'Ответ компьютера: {l[k.get_y()]}</br>' \
            f'итог = {k.get_win()}</br>' \
@@ -122,7 +122,7 @@ def rullgame3():
 def game_luck():
      return f'<div>' \
             f'{style}' \
-            f' {htmlll}' \
+            f' {html_game3}' \
             f'Предел от {luck.get_l()} до {luck.get_r()}</br>' \
             f'Количество попыток {luck.get_count()} </br>' \
             f'Итого {luck.set_win()} </br>' \

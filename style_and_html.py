@@ -1,4 +1,4 @@
-html = '''<html>
+html_game1 = '''<html>
    <body>
       <form action = "http://localhost:5000/resgame1" method = "post">
          <p>Введите ответ:</p>
@@ -7,7 +7,7 @@ html = '''<html>
       </form>
    </body>
 </html>'''
-htmll = '''<html>
+html_game2 = '''<html>
    <body>
       <form action = "http://localhost:5000/ress" method = "post">
          <p>Введите ответ:</p>
@@ -16,7 +16,7 @@ htmll = '''<html>
       </form>
    </body>
 </html>'''
-htmlll = '''<html>
+html_game3 = '''<html>
     <body>
        <form action = "http://localhost:5000/res_luck" method = "post">
           <p>Введите ответ:</p>
