@@ -14,6 +14,7 @@ class Luck:
     def update_count(self):
         self.count += 1
 
+
     def get_count(self):
         return self.count
 
@@ -43,7 +44,6 @@ class Luck:
         self.r = 100
         self.y = random.randrange(2, 100)
         self.count = 0
-        self.win = 0
 
     def update_win(self, win):
         self.win = win
@@ -53,6 +53,7 @@ class Luck:
         return li[self.win]
 
     def check_luck(self):
+        Luck.update_count(self)
         if self.x > self.y:
             self.win = 1
             Luck.update_r(self)
@@ -61,4 +62,5 @@ class Luck:
             Luck.update_l(self)
         elif self.x == self.y:
             self.win = 4
-        Luck.update_count(self)
+            Luck.null(self)
+
