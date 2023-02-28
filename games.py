@@ -2,206 +2,18 @@ import random
 from flask import Flask, render_template
 from flask import redirect, request
 app = Flask(__name__)
+from game1 import *
+from game2 import *
+from game3 import *
+from style_and_html import *
 
 
-class Bm:
-
-    def __init__(self, count=0, x=random.randrange(1, 100), y=random.randrange(1, 100)):
-        self.count = count
-        self.x = x
-        self.y = y
-
-    def number(self):
-        return 'следующее число больше ' + str(self.x) + '?'
-
-    def get_x(self):
-        return self.x
-
-    def get_y(self):
-        return self.y
-
-    def get_count(self):
-        return self.count
-
-    def upload_count(self):
-        self.count += 1
-
-    def upload_x(self):
-        self.x = self.y
-
-    def random_x(self):
-        self.x = random.randrange(1, 100)
-
-    def null_count(self):
-        self.count = 0
-
-    def upload_y(self):
-        self.y = random.randrange(1, 100)
-
-
-class Knb:
-    def __init__(self, x='-', y = 3, c = 4):
-        self.x = x
-        self.y = y
-        self.c = c
-
-    def upload_x(self, x):
-        self.x = x
-
-    def upload_y(self):
-        self.y = random.randrange(0, 3)
-
-    def get_x(self):
-        return self.x
-
-    def get_y(self):
-        return self.y
-
-    def upload_c(self, c):
-        self.c = c
-
-    def get_c(self):
-        return self.c
-
-    def get_win(self):
-        if self.c == 3:
-            return 'Вы выиграли'
-        elif self.c == 2:
-            return 'Вы проиграли'
-        elif self.c == 1:
-            return 'ничья'
-        elif self.c == 0:
-            return 'некорректный ввод'
-        else: return '-'
-
-
-class Luck:
-    def __init__(self, x=0, y=random.randrange(2, 100), l=1, r=100, count=0, win=0):
-        self.x = x
-        self.y = y
-        self.l = l
-        self.r = r
-        self.count = count
-        self.win = win
-
-    def update_count(self):
-        self.count += 1
-
-    def get_count(self):
-        return self.count
-
-    def update_l(self):
-        self.l = self.x
-
-    def update_r(self):
-        self.r = self.x
-
-    def update_x(self, x):
-        self.x = x
-
-    def get_l(self):
-        return self.l
-
-    def get_r(self):
-        return self.r
-
-    def get_x(self):
-        return self.x
-
-    def get_y(self):
-        return self.y
-
-    def null(self):
-        self.l = 1
-        self.r = 100
-        self.y = random.randrange(2, 100)
-        self.count = 0
-        self.win = 0
-
-    def update_win(self, win):
-        self.win = win
-
-    def set_win(self):
-        li = ['-', 'Ваше число больше', 'Ваше число меньше', 'некорректный ввод', 'победа']
-        return li[self.win]
-
-    def check_luck(self):
-        if self.x > self.y:
-            self.win = 1
-            Luck.update_r(self)
-        elif self.x < self.y:
-            self.win = 2
-            Luck.update_l(self)
-        elif self.x == self.y:
-            self.win = 4
-        Luck.update_count(self)
-
-
-k = Knb()
 g = Bm()
+k = Knb()
 luck = Luck()
 
 
-html = '''<html>
-   <body>
-      <form action = "http://localhost:5000/resgame1" method = "post">
-         <p>Введите ответ:</p>
-         <p><input type = "text" name = "answer" placeholder='ответ'/></p>
-         <p><input type = "submit" value = "отправить" /></p>
-      </form>
-   </body>
-</html>'''
-htmll = '''<html>
-   <body>
-      <form action = "http://localhost:5000/ress" method = "post">
-         <p>Введите ответ:</p>
-         <p><input type = "text" name = "answerr" placeholder='ответ'/></p>
-         <p><input type = "submit" value = "отправить" /></p>
-      </form>
-   </body>
-</html>'''
-htmlll = '''<html>
-    <body>
-       <form action = "http://localhost:5000/res_luck" method = "post">
-          <p>Введите ответ:</p>
-          <p><input type = "text" name = "answer_luck" placeholder='ответ'/></p>
-          <p><input type = "submit" value = "отправить" /></p>
-       </form>
-    </body>
- </html>'''
-style = '''
-    <style>
-        html{
-            background: url("https://cdn.discordapp.com/attachments/1044693632768282778/1079094981320527972/img.png") no-repeat center center fixed;
-        }
-        *{
-            color: burlywood;
-            text-decoration: none;
-        }
-
-        a{
-            display: inline-block;
-            padding: 10px 15px;
-            border: 1px solid burlywood;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        a:hover{
-            color: orangered;
-            border: 1px solid orangered;
-        }
-        
-        input{
-            background: inherit;
-            border: 1px solid burlywood;
-            border-radius: 10px;
-            padding: 10px 15px;
-        }
-    </style>
-'''
-
-#фунции 1ой игры
+#функции 1ой игры
 @app.route('/')
 def choose():
     return render_template('pravila.html')
@@ -258,7 +70,7 @@ def loser():
            f'   <a href="/game1">начать снова</a>' \
            f'</div>'
 
-#фунции 2ой игры
+#функции 2ой игры
 @app.route('/rullgame2')
 def rullgame2():
     return render_template('rullgame2.html')
@@ -303,7 +115,7 @@ def get_result():
 
 
 
-#фунции 3ей игры
+#функции 3ей игры
 @app.route('/rullgame3')
 def rullgame3():
      return render_template('rullgame3.html')
