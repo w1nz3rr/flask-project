@@ -13,7 +13,6 @@ k = Knb()
 luck = Luck()
 
 
-#функции 1ой игры
 @app.route('/')
 def choose():
     return render_template('pravila.html')
@@ -70,7 +69,6 @@ def loser():
            f'   <a href="/game1">начать снова</a>' \
            f'</div>'
 
-#функции 2ой игры
 @app.route('/rullgame2')
 def rullgame2():
     return render_template('rullgame2.html')
@@ -115,7 +113,6 @@ def get_result():
 
 
 
-#функции 3ей игры
 @app.route('/rullgame3')
 def rullgame3():
      return render_template('rullgame3.html')
