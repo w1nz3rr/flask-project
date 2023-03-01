@@ -1,10 +1,9 @@
-import random
 from flask import Flask, render_template
 from flask import redirect, request
 app = Flask(__name__)
-from game1 import *
-from game2 import *
-from game3 import *
+from games.game1 import Bm
+from games.game2 import Knb
+from games.game3 import Luck
 from style_and_html import *
 
 
